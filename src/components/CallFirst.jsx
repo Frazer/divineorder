@@ -1,6 +1,6 @@
 import { people, telHref } from "../config.js";
 
-export default function CallFirst({ heading = "Call before you write." }) {
+export default function CallFirst({ heading = "Calling is preferable." }) {
   return (
     <section className="call-first">
       <div className="wrap call-first-grid">
@@ -8,8 +8,8 @@ export default function CallFirst({ heading = "Call before you write." }) {
           <p className="eyebrow">Free consultation</p>
           <h2>{heading}</h2>
           <p>
-            A phone call is the best way to start. Nancy and Kevin would like to
-            hear about the house before you use the form. The consultation is free.
+            If you would rather write, the contact form below prepares an email to
+            Nancy and Kevin. The consultation is free.
           </p>
         </div>
         <ul className="call-list">

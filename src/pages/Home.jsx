@@ -29,8 +29,8 @@ const inclusions = [
 const steps = [
   {
     n: "01",
-    title: "Call first",
-    text: "The consultation is free. Phone Nancy or Kevin and tell them the size of the home, when you take the keys, and what you want shelved, organized, and cleaned.",
+    title: "A phone call",
+    text: "Calling is preferable, and the consultation is free. Phone Nancy or Kevin and tell them the size of the home, when you take the keys, and what you want shelved, organized, and cleaned.",
   },
   {
     n: "02",
@@ -47,7 +47,7 @@ const steps = [
 export default function Home() {
   usePage(
     "NK Enterprises — Before you move in",
-    "NK Enterprises is Nancy Jeppson and Kevin Richard’s home organization service. Before you move in, they fit high-quality shelves, organize the house, and leave it clean. Call for a free consultation. Most homes are five to eight thousand dollars."
+    "NK Enterprises is Nancy Jeppson and Kevin Richard’s home organization service. Before you move in, they fit high-quality shelves, organize the house, and leave it clean. Calling is preferable. Most homes are five to eight thousand dollars."
   );
 
   return (
@@ -74,11 +74,12 @@ export default function Home() {
             </div>
             <p className="price-note">
               The consultation is free. Most houses then fall between{" "}
-              <strong>$5,000 and $8,000</strong>. Call before you use the form.
+              <strong>$5,000 and $8,000</strong>. Calling is preferable.
             </p>
             <p className="hero-switch">
-              Prefer to write? <Link to="/inquire?service=before">The form</Link> emails
-              both of them. Already living in the house?{" "}
+              If you would rather write, the{" "}
+              <Link to="/inquire?service=before">contact form</Link> prepares an email
+              to us. Already living in the house?{" "}
               <Link to="/home-order">Home Order</Link> is cleaning and organization
               after you have moved in.
             </p>
@@ -129,8 +130,8 @@ export default function Home() {
           <div className="section-head">
             <h2>How a quote works.</h2>
             <p className="prose">
-              Call Nancy or Kevin first. The consultation is free, and you will have
-              a figure before any work is booked.
+              Calling is preferable, and the consultation is free. You will have a
+              figure before any work is booked.
             </p>
           </div>
           <ol className="steps">
@@ -156,15 +157,16 @@ export default function Home() {
           <div className="band-copy">
             <p>
               Depending on the house. Size, the shelving, and how much cleaning and
-              organization the rooms need all change the figure. Call for an actual
-              quote. The form is there if you would rather write.
+              organization the rooms need all change the figure. Calling is
+              preferable. If you would rather write, the contact form prepares an
+              email to us.
             </p>
             <div className="hero-actions">
               <a className="button button-on-dark" href={telHref(people[0].phone)}>
                 Call Nancy
               </a>
               <Link className="button button-ghost button-on-dark" to="/inquire?service=before">
-                Write instead
+                Use the form
               </Link>
             </div>
           </div>

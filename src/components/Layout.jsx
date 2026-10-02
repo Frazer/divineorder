@@ -98,8 +98,8 @@ export default function Layout() {
             <Link to="/inquire">Inquire</Link>
           </nav>
           <p className="footer-note">
-            Chaos to order. Mess to beauty. Stress to peace. Call for a free
-            consultation before you write.
+            Chaos to order. Mess to beauty. Stress to peace. Calling is preferable.
+            The form prepares an email if you would rather write.
           </p>
         </div>
         <div className="wrap footer-base">

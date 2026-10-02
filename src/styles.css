@@ -1,12 +1,13 @@
 :root {
-  --paper: #f4efe8;
-  --paper-2: #e7dfd2;
-  --cream: #faf7f2;
-  --ink: #1c1916;
-  --ink-soft: #433d38;
-  --rule: rgba(28, 25, 22, 0.16);
-  --green: #246b22;
-  --header-h: 4.5rem;
+  --paper: #f7f6f3;
+  --paper-2: #e5f3dc;
+  --cream: #ffffff;
+  --ink: #111111;
+  --ink-soft: #3a3a3a;
+  --rule: rgba(17, 17, 17, 0.16);
+  --green: #2f7a24;
+  --green-deep: #1d5218;
+  --header-h: 6.5rem;
   --page: 72rem;
   --gutter: 1.25rem;
   --serif: "Fraunces", "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
@@ -160,9 +161,9 @@ select {
   justify-content: center;
   min-height: 48px;
   padding: 0.85rem 1.25rem;
-  border: 1px solid var(--ink);
-  background: var(--ink);
-  color: var(--cream);
+  border: 1px solid var(--green);
+  background: var(--green);
+  color: #fff;
   font-size: 0.74rem;
   font-weight: 500;
   letter-spacing: 0.14em;
@@ -172,8 +173,8 @@ select {
 }
 
 .button:hover {
-  border-color: var(--green);
-  background: var(--green);
+  border-color: var(--green-deep);
+  background: var(--green-deep);
 }
 
 .button-ghost {
@@ -187,14 +188,15 @@ select {
 }
 
 .button-on-dark {
-  border-color: var(--cream);
-  background: var(--cream);
-  color: var(--ink);
+  border-color: var(--green);
+  background: var(--green);
+  color: #fff;
 }
 
 .button-on-dark:hover {
-  background: transparent;
-  color: var(--cream);
+  border-color: #fff;
+  background: #fff;
+  color: var(--ink);
 }
 
 .button-ghost.button-on-dark {
@@ -213,8 +215,9 @@ select {
   top: 0;
   z-index: 40;
   height: var(--header-h);
-  border-bottom: 1px solid var(--rule);
-  background: #f4efe8;
+  border-bottom: 4px solid var(--green);
+  background: #111;
+  color: #fff;
 }
 
 .header-inner {
@@ -237,16 +240,17 @@ select {
 }
 
 .brand img {
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 5rem;
+  height: 5rem;
   border-radius: 50%;
   object-fit: cover;
   background: #111;
 }
 
 .brand-name {
+  color: #fff;
   font-style: italic;
-  font-size: 1.15rem;
+  font-size: 1.35rem;
   font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.05;
@@ -259,7 +263,7 @@ select {
 }
 
 .nav-link {
-  color: var(--ink-soft);
+  color: rgba(255, 255, 255, 0.78);
   font-size: 0.74rem;
   font-weight: 500;
   letter-spacing: 0.13em;
@@ -269,11 +273,11 @@ select {
 
 .nav-link:hover,
 .nav-link[aria-current="page"] {
-  color: var(--ink);
+  color: #fff;
 }
 
 .nav-link[aria-current="page"] {
-  box-shadow: inset 0 -1px 0 var(--ink);
+  box-shadow: inset 0 -2px 0 #8ed46a;
 }
 
 .menu-toggle {
@@ -282,6 +286,7 @@ select {
   padding: 0;
   border: 0;
   background: none;
+  color: #fff;
   font-size: 0.74rem;
   font-weight: 500;
   letter-spacing: 0.14em;
@@ -739,8 +744,8 @@ select {
 }
 
 .call-first {
-  background: var(--ink);
-  color: var(--cream);
+  background: var(--green);
+  color: #fff;
 }
 
 .call-first-grid {
@@ -761,13 +766,13 @@ select {
 }
 
 .call-first .eyebrow {
-  color: #c6e6b4;
+  color: #e5ffd4;
 }
 
 .call-first p {
-  max-width: 36rem;
+  max-width: 38rem;
   margin-top: 0.9rem;
-  color: #f3eadf;
+  color: #f3fff0;
 }
 
 .call-list {
@@ -785,7 +790,7 @@ select {
 }
 
 .call-phone {
-  color: var(--cream);
+  color: #fff;
   font-family: var(--serif);
   font-size: clamp(1.8rem, 3vw, 2.4rem);
   letter-spacing: -0.03em;
@@ -821,8 +826,13 @@ select {
 }
 
 .site-footer {
-  border-top: 1px solid var(--rule);
   padding: 3rem 0 1.5rem;
+  background: #111;
+  color: #f7f6f3;
+}
+
+.site-footer .brand-name {
+  color: #fff;
 }
 
 .footer-grid {
@@ -848,22 +858,19 @@ select {
   gap: 0.1rem;
 }
 
-.footer-people a {
-  color: var(--ink);
+.footer-people a,
+.footer-contact a,
+.footer-nav a {
+  color: #f7f6f3;
   text-decoration: none;
+}
+
+.footer-people a[href^="tel"],
+.footer-contact a {
+  color: #9ee07a;
 }
 
 .footer-people a:hover,
-.footer-contact a:hover {
-  text-decoration: underline;
-}
-
-.footer-contact a,
-.footer-nav a {
-  color: var(--ink);
-  text-decoration: none;
-}
-
 .footer-contact a:hover,
 .footer-nav a:hover {
   text-decoration: underline;
@@ -878,25 +885,34 @@ select {
 
 .footer-note {
   max-width: 22rem;
-  color: var(--ink-soft);
+  color: rgba(247, 246, 243, 0.78);
 }
 
 .footer-base {
   margin-top: 2.4rem;
   padding-top: 1rem;
-  border-top: 1px solid var(--rule);
-  color: var(--ink-soft);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(247, 246, 243, 0.7);
   font-size: 0.88rem;
 }
 
 @media (max-width: 900px) {
+  :root {
+    --header-h: 5.5rem;
+  }
+
   .menu-toggle {
     display: inline-flex;
     align-items: center;
   }
 
+  .brand img {
+    width: 4.25rem;
+    height: 4.25rem;
+  }
+
   .brand-name {
-    font-size: 1rem;
+    font-size: 1.15rem;
   }
 
   .nav-links {
@@ -917,15 +933,16 @@ select {
     height: calc(100dvh - var(--header-h));
     padding: 1.25rem var(--gutter) 2rem;
     overflow: auto;
-    background: #f4efe8;
-    border-top: 1px solid var(--rule);
+    background: var(--paper);
+    border-top: 4px solid var(--green);
   }
 
   .nav-links.is-open .nav-link {
     display: block;
     width: 100%;
     padding: 0.7rem 0;
-    background: #f4efe8;
+    background: var(--paper);
+    color: var(--ink);
     font-family: var(--serif);
     font-size: clamp(2rem, 8vw, 2.6rem);
     font-weight: 500;

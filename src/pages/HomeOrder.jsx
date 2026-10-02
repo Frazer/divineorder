@@ -15,7 +15,7 @@ const organization = [
 export default function HomeOrder() {
   usePage(
     "Home Order — NK Enterprises",
-    "Home Order is Nancy Jeppson and Kevin Richard’s cleaning and organization service for a house you already live in. Call for a free consultation before you write."
+    "Home Order is Nancy Jeppson and Kevin Richard’s cleaning and organization service for a house you already live in. Calling is preferable. The form prepares an email if you would rather write."
   );
 
   return (
@@ -38,8 +38,9 @@ export default function HomeOrder() {
               </a>
             </div>
             <p className="hero-switch">
-              Call before you write. <Link to="/inquire?service=home-order">The form</Link>{" "}
-              emails both of them. Just bought, and not moved in yet?{" "}
+              Calling is preferable. If you would rather write, the{" "}
+              <Link to="/inquire?service=home-order">contact form</Link> prepares an
+              email to us. Just bought, and not moved in yet?{" "}
               <Link to="/">See the service for before you move in.</Link>
             </p>
           </div>
@@ -107,14 +108,15 @@ export default function HomeOrder() {
             <p>
               Tell them the rooms that need a clean, the rooms that need organization,
               or that you want both. Nancy and Kevin will answer with a figure for
-              this house. Call first. The consultation is free.
+              this house. Calling is preferable. If you would rather write, the
+              contact form prepares an email to us.
             </p>
             <div className="hero-actions">
               <a className="button button-on-dark" href={telHref(people[1].phone)}>
                 Call Kevin
               </a>
               <Link className="button button-ghost button-on-dark" to="/inquire?service=home-order">
-                Write instead
+                Use the form
               </Link>
             </div>
           </div>

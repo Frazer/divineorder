@@ -23,15 +23,15 @@ const hints = [
 
 function noteFor(service) {
   if (service === "home-order") {
-    return "Call first. Home Order is quoted from the rooms you want cleaned and the rooms you want organized.";
+    return "Home Order is quoted from the rooms you want cleaned and the rooms you want organized. This form prepares that email for you.";
   }
   if (service === "gifts" || service === "literacy") {
-    return "Call first. Nancy or Kevin will explain how this service works and what it costs.";
+    return "Nancy or Kevin will explain how this service works and what it costs. This form prepares that email for you.";
   }
   if (service === "unsure") {
-    return "Call first. If you have just bought, the guide is $5,000 to $8,000. If you already live there, the quote follows the cleaning and organization you want.";
+    return "If you have just bought, the guide is $5,000 to $8,000. If you already live there, the quote follows the cleaning and organization you want. This form prepares that email for you.";
   }
-  return "Call first. Before you move in, most houses fall between $5,000 and $8,000. That is a guide. The quote is for this house.";
+  return "Before you move in, most houses fall between $5,000 and $8,000. That is a guide. The quote is for this house. This form prepares that email for you.";
 }
 
 function compose(form) {
@@ -54,7 +54,7 @@ export default function Inquire() {
 
   usePage(
     "Inquire — NK Enterprises",
-    "Call Nancy Jeppson or Kevin Richard before you write. The consultation is free. The form emails both of them."
+    "Calling NK Enterprises is preferable. If you would rather write, the contact form prepares an email to Nancy Jeppson and Kevin Richard."
   );
 
   const [form, setForm] = useState({
@@ -133,11 +133,11 @@ export default function Inquire() {
     <section className="section inquire">
       <div className="wrap inquire-grid">
         <div>
-          <p className="eyebrow">If you would rather write</p>
+          <p className="eyebrow">For those who would rather write</p>
           <h1 className="display display-small">Tell us about the house.</h1>
           <p className="lede">
-            This form emails Nancy Jeppson and Kevin Richard together. A call is
-            still the better way to start.
+            Calling is preferable. If you would rather write, this contact form
+            prepares an email to Nancy and Kevin.
           </p>
 
           {note ? (
