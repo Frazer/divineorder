@@ -1,11 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { contact } from "../config.js";
+import CallFirst from "../components/CallFirst.jsx";
+import { mailHref } from "../config.js";
 import { usePage } from "../usePage.js";
 
 const services = [
   { value: "before", label: "Before I move in" },
   { value: "home-order", label: "Home Order — I already live there" },
+  { value: "gifts", label: "Unique gifts and décor" },
+  { value: "literacy", label: "Children’s financial literacy" },
   { value: "unsure", label: "Not sure which service" },
 ];
 
@@ -20,12 +23,15 @@ const hints = [
 
 function noteFor(service) {
   if (service === "home-order") {
-    return "Home Order is quoted from the rooms you want cleaned and the rooms you want organized.";
+    return "Call first. Home Order is quoted from the rooms you want cleaned and the rooms you want organized.";
+  }
+  if (service === "gifts" || service === "literacy") {
+    return "Call first. Nancy or Kevin will explain how this service works and what it costs.";
   }
   if (service === "unsure") {
-    return "If you have just bought, the guide is $5,000 to $8,000. If you already live there, the quote follows the cleaning and organization you want.";
+    return "Call first. If you have just bought, the guide is $5,000 to $8,000. If you already live there, the quote follows the cleaning and organization you want.";
   }
-  return "Before you move in, most houses fall between $5,000 and $8,000. That is a guide. The quote is for this house.";
+  return "Call first. Before you move in, most houses fall between $5,000 and $8,000. That is a guide. The quote is for this house.";
 }
 
 function compose(form) {
@@ -47,8 +53,8 @@ export default function Inquire() {
   const preset = services.some((item) => item.value === requested) ? requested : "before";
 
   usePage(
-    "Inquire — Divine Order",
-    "Request a quote from Kevin and Nancy for Divine Order. Before you move in, most houses are five to eight thousand dollars. Home Order is quoted for the house."
+    "Inquire — NK Enterprises",
+    "Call Nancy Jeppson or Kevin Richard before you write. The consultation is free. The form emails both of them."
   );
 
   const [form, setForm] = useState({
@@ -81,7 +87,7 @@ export default function Inquire() {
     const next = {};
     if (!form.name.trim()) next.name = "Add your name, so the quote has a person on it.";
     if (!/^\S+@\S+\.\S+$/.test(form.email.trim())) {
-      next.email = "Add an email address Kevin and Nancy can reply to.";
+      next.email = "Add an email address Nancy and Kevin can reply to.";
     }
     if (!form.message.trim()) {
       next.message = "Tell us a little about the house.";
@@ -101,13 +107,10 @@ export default function Inquire() {
     }
 
     const body = compose(form);
+    const subject = `NK Enterprises — ${serviceLabels[form.service]} — ${form.name.trim()}`;
     setNote(body);
     setCopied(false);
-
-    if (contact.email) {
-      const subject = `Divine Order quote — ${serviceLabels[form.service]} — ${form.name.trim()}`;
-      window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    }
+    window.location.href = mailHref(subject, body);
   }
 
   async function copyNote() {
@@ -119,28 +122,37 @@ export default function Inquire() {
     }
   }
 
+  const readyMail = mailHref(
+    `NK Enterprises — ${serviceLabels[form.service]} — ${form.name.trim()}`,
+    note
+  );
+
   return (
+    <>
+    <CallFirst />
     <section className="section inquire">
       <div className="wrap inquire-grid">
         <div>
-          <p className="eyebrow">A quote</p>
+          <p className="eyebrow">If you would rather write</p>
           <h1 className="display display-small">Tell us about the house.</h1>
           <p className="lede">
-            Kevin and Nancy quote each home themselves. A few particulars are
-            enough for them to come back with a figure.
+            This form emails Nancy Jeppson and Kevin Richard together. A call is
+            still the better way to start.
           </p>
 
           {note ? (
             <div className="confirm" role="status">
               <h2>The note is ready.</h2>
               <p>
-                {contact.email
-                  ? "Your mail app should open with this note addressed to Kevin and Nancy. You can copy it here as well."
-                  : "Copy this note and send it to Kevin and Nancy."}
+                Your mail app should open with this note addressed to Nancy Jeppson
+                and Kevin Richard. If it does not, use the email link.
               </p>
               <textarea readOnly value={note} aria-label="Your inquiry" />
               <div className="hero-actions">
-                <button type="button" className="button" onClick={copyNote}>
+                <a className="button" href={readyMail}>
+                  Email Nancy and Kevin
+                </a>
+                <button type="button" className="button button-ghost" onClick={copyNote}>
                   {copied ? "Copied" : "Copy note"}
                 </button>
                 <button type="button" className="button button-ghost" onClick={() => setNote("")}>
@@ -211,7 +223,7 @@ export default function Inquire() {
               </div>
               <p className="form-aside">{aside}</p>
               <button className="button" type="submit">
-                Request a quote
+                Email Nancy and Kevin
               </button>
             </form>
           )}
@@ -227,6 +239,7 @@ export default function Inquire() {
         </aside>
       </div>
     </section>
+    </>
   );
 }
 

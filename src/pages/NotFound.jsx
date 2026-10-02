@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 import { usePage } from "../usePage.js";
 
 export default function NotFound() {
-  usePage("Page not found — Divine Order", "That page is not part of Divine Order.");
+  usePage("Page not found — NK Enterprises", "That page is not part of NK Enterprises.");
 
   return (
     <section className="section">
       <div className="wrap narrow">
         <p className="eyebrow">404</p>
         <h1 className="display display-small">That page is not here.</h1>
-        <p className="lede">The house has two services, and a way to ask for a quote.</p>
+        <p className="lede">The house has two organizing services, and a way to call or write.</p>
         <div className="hero-actions">
           <Link className="button" to="/">
             Before you move in

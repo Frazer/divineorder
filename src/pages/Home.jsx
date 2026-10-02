@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Photo from "../components/Photo.jsx";
-import { publicUrl } from "../config.js";
+import { people, publicUrl, telHref } from "../config.js";
 import { usePage } from "../usePage.js";
 
 const inclusions = [
@@ -29,13 +29,13 @@ const inclusions = [
 const steps = [
   {
     n: "01",
-    title: "Tell us about the house",
-    text: "Write with the size of the home, when you take the keys, and what you want shelved, organized, and cleaned.",
+    title: "Call first",
+    text: "The consultation is free. Phone Nancy or Kevin and tell them the size of the home, when you take the keys, and what you want shelved, organized, and cleaned.",
   },
   {
     n: "02",
     title: "Receive an actual quote",
-    text: "Kevin and Nancy reply with a figure for this house. Five to eight thousand dollars is the guide, and the quote is the real number.",
+    text: "They reply with a figure for this house. Five to eight thousand dollars is the guide, and the quote is the real number.",
   },
   {
     n: "03",
@@ -46,38 +46,39 @@ const steps = [
 
 export default function Home() {
   usePage(
-    "Divine Order — Before you move in",
-    "Divine Order is Kevin and Nancy’s service for a home you have just bought. Before you move in, they fit high-quality shelves, organize the house, and leave it clean. Most homes are five to eight thousand dollars. Get in touch for a quote."
+    "NK Enterprises — Before you move in",
+    "NK Enterprises is Nancy Jeppson and Kevin Richard’s home organization service. Before you move in, they fit high-quality shelves, organize the house, and leave it clean. Call for a free consultation. Most homes are five to eight thousand dollars."
   );
 
   return (
     <>
       <section className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">Kevin & Nancy</p>
+          <p className="eyebrow">Nancy Jeppson & Kevin Richard</p>
           <div className="hero-bottom">
             <h1 className="display">
               The house, <em>in order</em>, before you move in.
             </h1>
             <p className="lede">
-              Divine Order prepares a home you have just bought. Before move-in day,
-              Kevin and Nancy fit high-quality shelves, set up everything the house
+              NK Enterprises prepares a home you have just bought. Before move-in day,
+              Nancy and Kevin fit high-quality shelves, set up everything the house
               needs to stay organized, and leave it clean.
             </p>
             <div className="hero-actions">
-              <Link className="button" to="/inquire?service=before">
-                Request a quote
-              </Link>
-              <a className="button button-ghost" href="#included">
-                What is included
+              <a className="button" href={telHref(people[0].phone)}>
+                Call Nancy
+              </a>
+              <a className="button button-ghost" href={telHref(people[1].phone)}>
+                Call Kevin
               </a>
             </div>
             <p className="price-note">
-              Most houses fall between <strong>$5,000 and $8,000</strong>. The quote
-              depends on the home.
+              The consultation is free. Most houses then fall between{" "}
+              <strong>$5,000 and $8,000</strong>. Call before you use the form.
             </p>
             <p className="hero-switch">
-              Already living in the house?{" "}
+              Prefer to write? <Link to="/inquire?service=before">The form</Link> emails
+              both of them. Already living in the house?{" "}
               <Link to="/home-order">Home Order</Link> is cleaning and organization
               after you have moved in.
             </p>
@@ -128,8 +129,8 @@ export default function Home() {
           <div className="section-head">
             <h2>How a quote works.</h2>
             <p className="prose">
-              Kevin and Nancy quote the house themselves. You will have a figure
-              before any work is booked.
+              Call Nancy or Kevin first. The consultation is free, and you will have
+              a figure before any work is booked.
             </p>
           </div>
           <ol className="steps">
@@ -155,12 +156,17 @@ export default function Home() {
           <div className="band-copy">
             <p>
               Depending on the house. Size, the shelving, and how much cleaning and
-              organization the rooms need all change the figure. Get in touch for an
-              actual quote.
+              organization the rooms need all change the figure. Call for an actual
+              quote. The form is there if you would rather write.
             </p>
-            <Link className="button button-on-dark" to="/inquire?service=before">
-              Get an actual quote
-            </Link>
+            <div className="hero-actions">
+              <a className="button button-on-dark" href={telHref(people[0].phone)}>
+                Call Nancy
+              </a>
+              <Link className="button button-ghost button-on-dark" to="/inquire?service=before">
+                Write instead
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -177,15 +183,55 @@ export default function Home() {
       </section>
 
       <section className="section">
+        <div className="wrap">
+          <div className="section-head">
+            <h2>Home organizers.</h2>
+            <p className="prose">
+              Contact NK Enterprises for all of your home organizing needs.
+            </p>
+          </div>
+          <ul className="phrases">
+            <li>Chaos to order</li>
+            <li>Mess to beauty</li>
+            <li>Stress to peace</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="wrap">
+          <div className="section-head">
+            <h2>Also from NK Enterprises.</h2>
+            <p className="prose">
+              Home organization is the main work. Nancy and Kevin also offer two
+              other services. Call, and they will tell you how each one works.
+            </p>
+          </div>
+          <div className="service-pair">
+            <article>
+              <p className="idx">01</p>
+              <h3>Unique Gifts & Décor</h3>
+              <p>Gifts and pieces for the house, chosen with the same eye they bring to putting a home in order.</p>
+            </article>
+            <article>
+              <p className="idx">02</p>
+              <h3>Children’s financial literacy</h3>
+              <p>Instruction that helps children learn how money works. Ask Nancy or Kevin about it when you call.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
         <div className="wrap principals">
           <div>
-            <p className="eyebrow">Provided by</p>
-            <h2>Kevin & Nancy</h2>
+            <p className="eyebrow">Nancy Jeppson & Kevin Richard</p>
+            <h2>NK Enterprises</h2>
           </div>
           <p className="prose">
-            They take the inquiry, they quote the house, and they see the work
-            through. Divine Order is their service, from the first note to the day
-            the house is in order.
+            They answer the phone, they quote the house, and they see the work
+            through. Call Nancy at {people[0].phone} or Kevin at {people[1].phone}.
+            The consultation is free.
           </p>
         </div>
       </section>

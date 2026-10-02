@@ -1,12 +1,21 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
-import { contact } from "../config.js";
+import { mailHref, people, publicUrl, telHref } from "../config.js";
 
 const links = [
   { to: "/", label: "Before you move in", end: true },
   { to: "/home-order", label: "Home Order" },
   { to: "/inquire", label: "Inquire" },
 ];
+
+function Brand() {
+  return (
+    <Link to="/" className="brand">
+      <img src={publicUrl("logo.png")} alt="" width="640" height="640" />
+      <span className="brand-name">NK Enterprises</span>
+    </Link>
+  );
+}
 
 export default function Layout() {
   const { pathname } = useLocation();
@@ -39,9 +48,7 @@ export default function Layout() {
       </a>
       <header className="site-header">
         <div className="header-inner">
-          <Link to="/" className="wordmark">
-            Divine Order
-          </Link>
+          <Brand />
           <button
             type="button"
             className="menu-toggle"
@@ -70,20 +77,20 @@ export default function Layout() {
       <footer className="site-footer">
         <div className="wrap footer-grid">
           <div>
-            <Link to="/" className="wordmark">
-              Divine Order
-            </Link>
-            <p className="footer-names">Kevin & Nancy</p>
-            {contact.phone ? (
-              <p className="footer-contact">
-                <a href={`tel:${contact.phone.replace(/[^\d+]/g, "")}`}>{contact.phone}</a>
-              </p>
-            ) : null}
-            {contact.email ? (
-              <p className="footer-contact">
-                <a href={`mailto:${contact.email}`}>{contact.email}</a>
-              </p>
-            ) : null}
+            <Brand />
+            <p className="footer-names">Home organizers</p>
+            <ul className="footer-people">
+              {people.map((person) => (
+                <li key={person.email}>
+                  <span>{person.name}</span>
+                  <a href={telHref(person.phone)}>{person.phone}</a>
+                  <a href={`mailto:${person.email}`}>{person.email}</a>
+                </li>
+              ))}
+            </ul>
+            <p className="footer-contact">
+              <a href={mailHref("NK Enterprises")}>Email Nancy and Kevin</a>
+            </p>
           </div>
           <nav className="footer-nav" aria-label="Footer">
             <Link to="/">Before you move in</Link>
@@ -91,11 +98,12 @@ export default function Layout() {
             <Link to="/inquire">Inquire</Link>
           </nav>
           <p className="footer-note">
-            A house put in order. Before you move in, or once you already live there.
+            Chaos to order. Mess to beauty. Stress to peace. Call for a free
+            consultation before you write.
           </p>
         </div>
         <div className="wrap footer-base">
-          <p>© {new Date().getFullYear()} Kevin & Nancy</p>
+          <p>© {new Date().getFullYear()} NK Enterprises</p>
         </div>
       </footer>
     </>
